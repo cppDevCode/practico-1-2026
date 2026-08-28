@@ -137,9 +137,25 @@ export function calcularPromedio(alumnos: Alumno[]): number {
 // -----------------------------------------------------------------------------
 // Devolver el alumno que tenga la nota más alta.
 // Si el arreglo está vacío, devolver undefined.
+
 export function obtenerMejorAlumno(alumnos: Alumno[]): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+    let alumnoConMejorNota: Alumno | undefined;
+    let encontrado = 0;
+    // alb: Dado la premisa si tenemos 2 alumnos con la misma nota mas alta se decide quedarse con el primero
+    const notaMasAlta = (alumno:Alumno) => { 
+        if (alumnos.some((alumnoB:Alumno) => alumnoB.nota < alumno.nota) && alumno.nota != encontrado) {
+            encontrado = alumno.nota;
+            return alumno;
+        }        
+    }; 
+
+    try {
+        alumnoConMejorNota = alumnos.find(notaMasAlta);        
+    } catch (e) {
+        throw e;
+    }
+
+    return alumnoConMejorNota;
 }
 
 // -----------------------------------------------------------------------------
