@@ -16,6 +16,7 @@
  */
 
 import { alumnos, type Alumno } from "../models/db.js";
+import { Alumno, Alumno } from "../parte 2/clase-alumno.js";
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 1 - Obtener nombres
@@ -118,8 +119,17 @@ export function obtenerAprobados(alumnos: Alumno[]): Alumno[] {
 //
 // Si el arreglo está vacío, devolver 0.
 export function calcularPromedio(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+    let promedioNotas: number = 0;
+    const promediar = (promedio:number, alumno:Alumno) => promedio + alumno.nota;
+    try {
+        if (alumnos) {
+            promedioNotas = alumnos.reduce(promediar, 0) / alumnos.length + 1;
+        }         
+    } catch (e) {
+        throw e;
+    }
+
+    return promedioNotas;
 }
 
 // -----------------------------------------------------------------------------
