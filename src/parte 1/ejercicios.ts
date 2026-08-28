@@ -27,8 +27,20 @@ import { alumnos, type Alumno } from "../models/db.js";
 // obtenerNombres(alumnos)
 // -> ["Juan", "María", "Pedro", ...]
 export function obtenerNombres(alumnos: Alumno[]): string[] {
-    // TODO
-    throw new Error("Implementar");
+    let nombresAlumnos: string[];
+    const nombreAlumno = (alumno:Alumno) => alumno.nombre;
+
+    try {
+        if (alumnos) {
+            nombresAlumnos = alumnos.map(nombreAlumno);
+        } else {
+            throw new Error ("Array recibido sin datos");
+        }
+    } catch (e) {
+        throw e;
+    }
+    
+    return nombresAlumnos;
 }
 
 // -----------------------------------------------------------------------------
@@ -39,8 +51,21 @@ export function obtenerNombres(alumnos: Alumno[]): string[] {
 // Ejemplo:
 // ["Juan Pérez", "María García", ...]
 export function obtenerNombresCompletos(alumnos: Alumno[]): string[] {
-    // TODO
-    throw new Error("Implementar");
+    let nombreApellido: string[];
+    const nombreCompleto = (alumno: Alumno) => alumno.nombre + ' '
+                + alumno.apellido;
+
+    try {
+        if (alumnos) {
+            nombreApellido = alumnos.map (nombreCompleto);
+        } else {
+            throw new Error("Array de alumnos sin datos");
+        }
+    } catch (e) {
+        throw e;
+    }
+
+    return nombreApellido;
 }
 
 // -----------------------------------------------------------------------------
@@ -48,8 +73,20 @@ export function obtenerNombresCompletos(alumnos: Alumno[]): string[] {
 // -----------------------------------------------------------------------------
 // Devolver solamente los alumnos que tengan 18 años o más.
 export function obtenerMayoresDeEdad(alumnos: Alumno[]): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+    let alumnosMayores18: Alumno[];
+    const mayoresEdad = (alumno: Alumno) => alumno.edad >= 18;
+
+    try {
+        if (alumnos) {
+            alumnosMayores18 = alumnos.filter(mayoresEdad);
+        } else {
+            throw new Error("Array de alumnos sin datos");
+        }
+    } catch (e) {
+        throw e;
+    }
+
+    return alumnosMayores18;
 }
 
 // -----------------------------------------------------------------------------
