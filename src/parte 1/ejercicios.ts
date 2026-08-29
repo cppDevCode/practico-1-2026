@@ -283,12 +283,12 @@ export function calcularPromedioPorCiudad(alumnos: Alumno[], ciudad: string): nu
 // Ejemplo:
 // transformar([1, 2, 3], n => n * 2)
 // -> [2, 4, 6]
-export function transformar<T, R>(
-    elementos: T[],
-    callback: (elemento: T) => R
-): R[] {
-    // TODO
-    throw new Error("Implementar");
+export function transformar<T, R>(elementos: T[],callback: (elemento: T) => R): R[] {
+    try {
+        return elementos.map(callback);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
