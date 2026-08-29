@@ -16,7 +16,7 @@
  */
 
 import { alumnos, type Alumno } from "../models/db.js";
-import { Alumno, Alumno, Alumno, Alumno } from "../parte 2/clase-alumno.js";
+import { Alumno, Alumno, Alumno, Alumno, Alumno } from "../parte 2/clase-alumno.js";
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 1 - Obtener nombres
@@ -332,12 +332,13 @@ export function buscar<T>(elementos: T[], callback: (elemento: T) => boolean): T
 // Ejemplos:
 // calcularTotal(alumnos, alumno => alumno.edad)
 // calcularTotal(alumnos, alumno => alumno.nota)
-export function calcularTotal(
-    alumnos: Alumno[],
-    callback: (alumno: Alumno) => number
-): number {
-    // TODO
-    throw new Error("Implementar");
+export function calcularTotal(alumnos: Alumno[], callback: (alumno: Alumno) => number): number {
+    const aplicoCallback = (acumulador:number, alumno:Alumno) => acumulador + callback(alumno);
+    try {
+        return alumnos.reduce(aplicoCallback, 0);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
