@@ -268,12 +268,10 @@ export function obtenerAlumnosDeCiudad(alumnos: Alumno[], ciudad: string): Alumn
 // Si no hay alumnos en esa ciudad, devolver 0.
 //
 // Se recomienda reutilizar funciones anteriores.
-export function calcularPromedioPorCiudad(
-    alumnos: Alumno[],
-    ciudad: string
-): number {
-    // TODO
-    throw new Error("Implementar");
+export function calcularPromedioPorCiudad(alumnos: Alumno[], ciudad: string): number {
+    const alumnosEnCiudad = obtenerAlumnosDeCiudad(alumnos, ciudad);
+    
+    return calcularPromedio(alumnosEnCiudad);
 }
 
 // -----------------------------------------------------------------------------
