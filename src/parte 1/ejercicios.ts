@@ -16,7 +16,7 @@
  */
 
 import { alumnos, type Alumno } from "../models/db.js";
-import { Alumno, Alumno } from "../parte 2/clase-alumno.js";
+import { Alumno, Alumno, Alumno } from "../parte 2/clase-alumno.js";
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 1 - Obtener nombres
@@ -122,8 +122,8 @@ export function calcularPromedio(alumnos: Alumno[]): number {
     let promedioNotas: number = 0;
     const promediar = (promedio:number, alumno:Alumno) => promedio + alumno.nota;
     try {
-        if (alumnos) {
-            promedioNotas = alumnos.reduce(promediar, 0) / alumnos.length + 1;
+        if (alumnos && alumnos.length != 0) {
+            promedioNotas = alumnos.reduce(promediar, 0) / alumnos.length;
         }         
     } catch (e) {
         throw e;
@@ -140,17 +140,12 @@ export function calcularPromedio(alumnos: Alumno[]): number {
 
 export function obtenerMejorAlumno(alumnos: Alumno[]): Alumno | undefined {
     let alumnoConMejorNota: Alumno | undefined;
-    let encontrado = 0;
-    // alb: Dado la premisa si tenemos 2 alumnos con la misma nota mas alta se decide quedarse con el primero
-    const notaMasAlta = (alumno:Alumno) => { 
-        if (alumnos.some((alumnoB:Alumno) => alumnoB.nota < alumno.nota) && alumno.nota != encontrado) {
-            encontrado = alumno.nota;
-            return alumno;
-        }        
-    }; 
+    const notaMasAlta = (alumnoMejorNota:Alumno, alumno:Alumno) => alumno.nota > alumnoMejorNota.nota ? alumno : alumnoMejorNota;
 
     try {
-        alumnoConMejorNota = alumnos.find(notaMasAlta);        
+        if (alumnos.length != 0 ) {
+        alumnoConMejorNota = alumnos.reduce(notaMasAlta);
+        }        
     } catch (e) {
         throw e;
     }
