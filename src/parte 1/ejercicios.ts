@@ -300,12 +300,12 @@ export function transformar<T, R>(elementos: T[],callback: (elemento: T) => R): 
 // Ejemplo:
 // filtrar([1, 2, 3, 4], n => n % 2 === 0)
 // -> [2, 4]
-export function filtrar<T>(
-    elementos: T[],
-    callback: (elemento: T) => boolean
-): T[] {
-    // TODO
-    throw new Error("Implementar");
+export function filtrar<T>(elementos: T[],callback: (elemento: T) => boolean): T[] {
+    try {
+        return elementos.filter(callback);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
