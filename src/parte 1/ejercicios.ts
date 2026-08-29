@@ -177,12 +177,17 @@ export function buscarPorLegajo(alumnos: Alumno[], legajo: number): Alumno | und
 // -----------------------------------------------------------------------------
 // Buscar el primer alumno cuyo nombre coincida con el recibido.
 // La comparación debe ser exacta.
-export function buscarPorNombre(
-    alumnos: Alumno[],
-    nombre: string
-): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+export function buscarPorNombre(alumnos: Alumno[], nombre: string): Alumno | undefined {
+    let alumnoEncontrado: Alumno | undefined;
+    const buscarAlumno = (alumno:Alumno) => alumno.nombre === nombre;
+
+    try {
+        alumnoEncontrado = alumnos.find(buscarAlumno);
+    } catch (e) {
+        throw e;
+    }
+
+    return alumnoEncontrado;
 }
 
 // -----------------------------------------------------------------------------
@@ -190,9 +195,14 @@ export function buscarPorNombre(
 // -----------------------------------------------------------------------------
 // Devolver true si existe al menos un alumno con nota menor a 6.
 // Resolver utilizando some.
-export function existeDesaprobado(alumnos: Alumno[]): boolean {
-    // TODO
-    throw new Error("Implementar");
+export function existeDesaprobado(alumnos: Alumno[]): boolean {    
+    const desaprobado = (alumno:Alumno) => alumno.nota < 6;
+
+    try {
+        return alumnos.some(desaprobado);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -201,8 +211,13 @@ export function existeDesaprobado(alumnos: Alumno[]): boolean {
 // Devolver true solamente si todos los alumnos tienen nota mayor o igual a 6.
 // Resolver utilizando every.
 export function todosAprobaron(alumnos: Alumno[]): boolean {
-    // TODO
-    throw new Error("Implementar");
+    const aprobado = (alumno:Alumno) => alumno.nota >= 6;
+
+    try {
+        return alumnos.every(aprobado);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
