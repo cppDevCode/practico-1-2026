@@ -158,12 +158,18 @@ export function obtenerMejorAlumno(alumnos: Alumno[]): Alumno | undefined {
 // -----------------------------------------------------------------------------
 // Buscar un alumno por su número de legajo.
 // Si no existe, devolver undefined.
-export function buscarPorLegajo(
-    alumnos: Alumno[],
-    legajo: number
-): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+export function buscarPorLegajo(alumnos: Alumno[], legajo: number): Alumno | undefined {
+    let alumnoEncontrado: Alumno | undefined;
+    const buscarAlumno = (alumno:Alumno) => alumno.legajo === legajo;
+
+    try {
+        alumnoEncontrado = alumnos.find(buscarAlumno);        
+    } catch (e) {
+        throw e;
+    }
+
+    return alumnoEncontrado;
+    
 }
 
 // -----------------------------------------------------------------------------
