@@ -358,15 +358,21 @@ export function calcularTotal(alumnos: Alumno[], callback: (alumno: Alumno) => n
 //
 // Resolver utilizando reduce.
 export function agruparPorCiudad(alumnos: Alumno[]): Record<string, Alumno[]> {
-    let ciudades: Ciudad[]; 
+    let ciudades:Record<string, Alumno[]> = {}; 
+    let ciudadActual:string;
     
-    alumnos.forEach( (alumno) =>
+    alumnos.forEach( (alumno:Alumno) =>
         {
-            if (ciudades.find(nombre)) {
-
-            }
+            ciudadActual = alumno.ciudad;
+            if (ciudadActual in ciudades) {
+                ciudades[ciudadActual]?.push(alumno);
+            } else {
+                ciudades[ciudadActual] = [];
+                ciudades[ciudadActual]?.push(alumno);
+            } 
         }
     );
+    return ciudades;
 }
 
 // -----------------------------------------------------------------------------
@@ -389,11 +395,16 @@ export interface Estadisticas {
     mejorAlumno: Alumno | undefined;
 }
 
-export function obtenerEstadisticas(
-    alumnos: Alumno[]
-): Estadisticas {
-    // TODO
-    throw new Error("Implementar");
+export function obtenerEstadisticas(alumnos: Alumno[]): Estadisticas {
+    const estadisticas: Estadisticas = {
+        cantidadTotal:  alumnos.length,
+        cantidadAprobados: cantidadAprobados(alumnos),
+        cantidadDesaprobados: alumnos.length - cantidadAprobados(alumnos),
+        promedio: calcularPromedio(alumnos),
+        mejorAlumno: obtenerMejorAlumno(alumnos)
+    };
+
+    return estadisticas;
 }
 
 // -----------------------------------------------------------------------------
@@ -401,18 +412,18 @@ export function obtenerEstadisticas(
 // -----------------------------------------------------------------------------
 // Descomentar estas líneas cuando se hayan implementado las funciones.
 //
-// console.log(obtenerNombres(alumnos).slice(0, 10));
-// console.log(obtenerNombresCompletos(alumnos).slice(0, 10));
-// console.log(obtenerMayoresDeEdad(alumnos).length);
-// console.log(obtenerAprobados(alumnos).length);
-// console.log(calcularPromedio(alumnos));
-// console.log(obtenerMejorAlumno(alumnos));
-// console.log(buscarPorLegajo(alumnos, 500));
-// console.log(existeDesaprobado(alumnos));
-// console.log(todosAprobaron(alumnos));
-// console.log(cantidadAprobados(alumnos));
-// console.log(sumarEdades(alumnos));
-// console.log(obtenerAlumnosDeCiudad(alumnos, "Bahía Blanca").length);
-// console.log(calcularPromedioPorCiudad(alumnos, "Bahía Blanca"));
-// console.log(agruparPorCiudad(alumnos));
-// console.log(obtenerEstadisticas(alumnos));
+console.log(obtenerNombres(alumnos).slice(0, 10));
+console.log(obtenerNombresCompletos(alumnos).slice(0, 10));
+console.log(obtenerMayoresDeEdad(alumnos).length);
+console.log(obtenerAprobados(alumnos).length);
+console.log(calcularPromedio(alumnos));
+console.log(obtenerMejorAlumno(alumnos));
+console.log(buscarPorLegajo(alumnos, 500));
+console.log(existeDesaprobado(alumnos));
+console.log(todosAprobaron(alumnos));
+console.log(cantidadAprobados(alumnos));
+console.log(sumarEdades(alumnos));
+console.log(obtenerAlumnosDeCiudad(alumnos, "Bahía Blanca").length);
+console.log(calcularPromedioPorCiudad(alumnos, "Bahía Blanca"));
+console.log(agruparPorCiudad(alumnos));
+console.log(obtenerEstadisticas(alumnos));
