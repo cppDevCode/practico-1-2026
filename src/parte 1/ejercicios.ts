@@ -315,12 +315,12 @@ export function filtrar<T>(elementos: T[],callback: (elemento: T) => boolean): T
 // el criterio indicado por el callback.
 //
 // Si ningún elemento cumple, devolver undefined.
-export function buscar<T>(
-    elementos: T[],
-    callback: (elemento: T) => boolean
-): T | undefined {
-    // TODO
-    throw new Error("Implementar");
+export function buscar<T>(elementos: T[], callback: (elemento: T) => boolean): T | undefined {
+    try {
+        return elementos.find(callback);
+    } catch (e) {
+        throw(e);
+    }
 }
 
 // -----------------------------------------------------------------------------
