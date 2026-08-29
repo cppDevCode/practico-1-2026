@@ -254,7 +254,11 @@ export function sumarEdades(alumnos: Alumno[]): number {
 export function obtenerAlumnosDeCiudad(alumnos: Alumno[], ciudad: string): Alumno[] {
     const alumnosEnCiudad = (alumno: Alumno) => alumno.ciudad === ciudad;
 
-    return A
+    try {
+        return alumnos.filter(alumnosEnCiudad);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
