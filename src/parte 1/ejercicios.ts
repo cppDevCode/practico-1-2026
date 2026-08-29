@@ -16,7 +16,7 @@
  */
 
 import { alumnos, type Alumno } from "../models/db.js";
-import { Alumno, Alumno, Alumno } from "../parte 2/clase-alumno.js";
+import { Alumno, Alumno, Alumno, Alumno } from "../parte 2/clase-alumno.js";
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 1 - Obtener nombres
@@ -237,20 +237,24 @@ export function cantidadAprobados(alumnos: Alumno[]): number {
 // Calcular la suma de las edades de todos los alumnos.
 // Resolver utilizando reduce.
 export function sumarEdades(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+    const acumulaEdades = (suma:number, alumno: Alumno) => alumno.edad + suma;
+
+    try {        
+        return alumnos.reduce(acumulaEdades, 0);
+    } catch (e) {
+        throw e;
+    }
+
 }
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 13 - Alumnos de una ciudad
 // -----------------------------------------------------------------------------
 // Devolver los alumnos que pertenezcan a la ciudad recibida.
-export function obtenerAlumnosDeCiudad(
-    alumnos: Alumno[],
-    ciudad: string
-): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+export function obtenerAlumnosDeCiudad(alumnos: Alumno[], ciudad: string): Alumno[] {
+    const alumnosEnCiudad = (alumno: Alumno) => alumno.ciudad === ciudad;
+
+    return A
 }
 
 // -----------------------------------------------------------------------------
