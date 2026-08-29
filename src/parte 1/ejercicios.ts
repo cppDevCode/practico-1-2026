@@ -17,6 +17,7 @@
 
 import { alumnos, type Alumno } from "../models/db.js";
 import { Alumno, Alumno, Alumno, Alumno, Alumno } from "../parte 2/clase-alumno.js";
+import { Ciudad } from "./clase-ciudad.js";
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 1 - Obtener nombres
@@ -356,11 +357,16 @@ export function calcularTotal(alumnos: Alumno[], callback: (alumno: Alumno) => n
 // }
 //
 // Resolver utilizando reduce.
-export function agruparPorCiudad(
-    alumnos: Alumno[]
-): Record<string, Alumno[]> {
-    // TODO
-    throw new Error("Implementar");
+export function agruparPorCiudad(alumnos: Alumno[]): Record<string, Alumno[]> {
+    let ciudades: Ciudad[]; 
+    
+    alumnos.forEach( (alumno) =>
+        {
+            if (ciudades.find(nombre)) {
+
+            }
+        }
+    );
 }
 
 // -----------------------------------------------------------------------------
