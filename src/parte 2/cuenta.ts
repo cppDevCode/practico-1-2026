@@ -13,14 +13,14 @@ export class Cuenta {
         if (saldoInicial < 0) {
             throw new Error("El saldo inicial no puede ser negativo");
         }
-        this.saldo = saldoInicial;
         this.numero = numero;
         this.titular = titular;
+        this.saldo = saldoInicial;
     }
 
     depositar(monto: number): void {
-        if (monto <0) {
-            throw new Error("El monto a depositar debe ser un nùmero mayor o igual a 0");
+        if (monto <= 0) {
+            throw new Error("El monto a depositar debe ser un nùmero mayor a 0");
         }
         this.saldo += monto;
     }

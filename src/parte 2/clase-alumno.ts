@@ -12,7 +12,7 @@
 // -----------------------------------------------------------------------------
 // EJERCICIO 10 - interface Materia
 // -----------------------------------------------------------------------------
-
+//TODO cambiar a type
 export type Materia = {
     codigo: number;
     nombre: string;
@@ -67,7 +67,7 @@ export class Alumno {
     }
 
     setEdad(edad: number): void {
-        if (edad <0) {
+        if (edad < 0) {
             throw new Error("La edad debe ser un nùmero mayor o igual a 0");
         }
         if (edad > 120) {
