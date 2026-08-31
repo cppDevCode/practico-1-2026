@@ -26,7 +26,7 @@ export class Cuenta {
     }
 
     retirar(monto: number): void {
-        if (monto <=0) {
+        if (monto <= 0) {
             throw new Error("El monto a retirar debe ser un nùmero mayor que 0");
         }
         if (monto > this.saldo) {

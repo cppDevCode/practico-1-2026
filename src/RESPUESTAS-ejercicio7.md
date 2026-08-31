@@ -11,7 +11,7 @@ Interface permite declarar la misma interface dos veces en el mismo scope y Type
 
 Type permite hacer uniones, donde un valor puede ser de más de un tipo, ejemplo: string | number.  
 
-Permite tmbién definir tuplas, es decir, arreglos donde podemos indicar el tipo de dato que corresponde a cada posiciòn. Por ejemplo: [string, number].  
+Permite también definir tuplas, es decir, arreglos donde podemos indicar el tipo de dato que corresponde a cada posiciòn. Por ejemplo: [string, number].  
 
  Además, con type podemos crear alias para tipos primitivos, por ejemplo type ID = string, para darle un nombre más específico a un tipo que vamos a utilizar.
 
@@ -52,4 +52,4 @@ type Alumno = Persona & {
 ## ¿Cuál elegirían para representar una entidad del dominio (por ejemplo, `Alumno`)? ¿Por qué?
 
 Si bien ambas funcionarìan bien, elegirìa `interface` porque està pensada para definir la estructura de un objeto y sus propiedades.  
-Si necesitara agregar, por ejemplo, un estado con valores predefinidos, podría crear un `type`separado y utilizarlo dentro de la `interface`. Por ejemplo, para tener un EstadoAlumno que indique su status ("activo", "inactivo", "egresado").
+Si necesitara agregar, por ejemplo, un estado con valores predefinidos, podría crear un `type` separado y utilizarlo dentro de la `interface`. Por ejemplo, para tener un EstadoAlumno que indique su status ("activo", "inactivo", "egresado").
