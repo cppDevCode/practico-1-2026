@@ -16,8 +16,6 @@
  */
 
 import { alumnos, type Alumno } from "../models/db.js";
-import { Alumno, Alumno, Alumno, Alumno, Alumno } from "../parte 2/clase-alumno.js";
-import { Ciudad } from "./clase-ciudad.js";
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 1 - Obtener nombres
