@@ -26,7 +26,7 @@ export abstract class Empleado {
     public setApellido(apellido: string): void {
         this.apellido = apellido;
     }
-    abstract calcularSueldo(): number;
+    public abstract calcularSueldo(): number;
 }
 
 export class EmpleadoTiempoCompleto extends Empleado {
