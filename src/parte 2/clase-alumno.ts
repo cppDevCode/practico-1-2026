@@ -45,6 +45,7 @@ export class Alumno {
         this.edad = edad;
         this.email = email;
     }
+    //getters y setters
     public getLegajo(): number {
         return this.legajo;
     }
@@ -111,7 +112,7 @@ export class Alumno {
     }
 
     public quitarMateria(codigo: number): Materia | undefined {
-        let materiaEncontrada = this.materias.find(m => m.codigo === codigo);
+        let materiaEncontrada: Materia | undefined = this.materias.find(m => m.codigo === codigo);
         if (!materiaEncontrada) {
             return undefined;
         }

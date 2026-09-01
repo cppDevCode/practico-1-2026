@@ -18,6 +18,7 @@ export class Cuenta {
         this.saldo = saldoInicial;
     }
 
+    //getters y setters   
     public getNumero(): number {
         return this.numero;
     }

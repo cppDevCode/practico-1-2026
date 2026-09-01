@@ -11,6 +11,7 @@ export abstract class Empleado {
         private legajo: number
     ) {}
 
+    //getters y setters
     public getNombre(): string {
         return this.nombre;
     }
