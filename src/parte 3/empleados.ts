@@ -6,11 +6,26 @@
  */
 export abstract class Empleado {
     constructor(
-        public nombre: string,
-        public apellido: string,
-        public legajo: number
+        private nombre: string,
+        private apellido: string,
+        private legajo: number
     ) {}
 
+    public getNombre(): string {
+        return this.nombre;
+    }
+    public getApellido(): string {
+        return this.apellido;
+    }
+    public getLegajo(): number {
+        return this.legajo;
+    }
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+    public setApellido(apellido: string): void {
+        this.apellido = apellido;
+    }
     abstract calcularSueldo(): number;
 }
 
@@ -24,9 +39,9 @@ export class EmpleadoTiempoCompleto extends Empleado {
         super(nombre, apellido, legajo);
     }
 
-    calcularSueldo(): number {
+    public calcularSueldo(): number {
         // TODO: cobra el sueldo básico, sin más cálculo.
-        throw new Error("Implementar");
+        return this.sueldoBasico;
     }
 }
 
@@ -41,9 +56,9 @@ export class EmpleadoMedioTiempo extends Empleado {
         super(nombre, apellido, legajo);
     }
 
-    calcularSueldo(): number {
+    public calcularSueldo(): number {
         // TODO: sueldo = horasTrabajadas * valorHora
-        throw new Error("Implementar");
+        return this.horasTrabajadas * this.valorHora;
     }
 }
 
@@ -58,8 +73,8 @@ export class EmpleadoPorComision extends Empleado {
         super(nombre, apellido, legajo);
     }
 
-    calcularSueldo(): number {
+    public calcularSueldo(): number {
         // TODO: sueldo = ventasTotales * (porcentajeComision / 100)
-        throw new Error("Implementar");
+        return this.ventasTotales * (this.porcentajeComision / 100);
     }
 }
