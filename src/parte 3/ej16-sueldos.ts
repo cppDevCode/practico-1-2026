@@ -13,7 +13,7 @@ export abstract class Empleado {
         public legajo: number
     ) {}
 
-    abstract calcularSueldo(): number;
+    public abstract calcularSueldo(): number;
 }
 
 export class EmpleadoFijo extends Empleado {
@@ -26,9 +26,8 @@ export class EmpleadoFijo extends Empleado {
         super(nombre, apellido, legajo);
     }
 
-    calcularSueldo(): number {
-        // TODO: cobra el sueldo mensual, sin más cálculo.
-        throw new Error("Implementar");
+    public override calcularSueldo(): number {
+        return this.sueldoMensual;
     }
 }
 
@@ -43,9 +42,9 @@ export class EmpleadoPorHora extends Empleado {
         super(nombre, apellido, legajo);
     }
 
-    calcularSueldo(): number {
+    public override calcularSueldo(): number {
         // TODO: sueldo = horas * valorHora
-        throw new Error("Implementar");
+        return this.horas * this.valorHora;
     }
 }
 
@@ -60,9 +59,8 @@ export class EmpleadoComision extends Empleado {
         super(nombre, apellido, legajo);
     }
 
-    calcularSueldo(): number {
-        // TODO: sueldo = ventas * (porcentajeComision / 100)
-        throw new Error("Implementar");
+    public override calcularSueldo(): number {
+        return this.ventas * (this.porcentajeComision/100);
     }
 }
 
@@ -71,6 +69,5 @@ export class EmpleadoComision extends Empleado {
  * Resolver utilizando reduce.
  */
 export function calcularSueldos(empleados: Empleado[]): number {
-    // TODO
-    throw new Error("Implementar");
+    return empleados.reduce((total, empleado) => total + empleado.calcularSueldo(), 0);
 }
