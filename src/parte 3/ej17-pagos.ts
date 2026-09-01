@@ -9,25 +9,25 @@ export interface MetodoPago {
 }
 
 export class TarjetaCredito implements MetodoPago {
-    pagar(monto: number): void {
+    public pagar(monto: number): void {
         console.log(`Pago de $${monto} realizado con tarjeta de crédito.`);
     }
 }
 
 export class Transferencia implements MetodoPago {
-    pagar(monto: number): void {
+    public pagar(monto: number): void {
         console.log(`Pago de $${monto} realizado con transferencia.`);
     }
 }
 
 export class MercadoPago implements MetodoPago {
-    pagar(monto: number): void {
+    public pagar(monto: number): void {
         console.log(`Pago de $${monto} realizado con mercado pago.`);
     }
 }
 
 export class Efectivo implements MetodoPago {
-    pagar(monto: number): void {
+    public pagar(monto: number): void {
         console.log(`Pago de $${monto} realizado con efectivo.`);
     }
 }

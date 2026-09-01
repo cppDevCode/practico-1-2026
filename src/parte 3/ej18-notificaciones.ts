@@ -9,19 +9,19 @@ export abstract class Notificacion {
 }
 
 export class NotificacionEmail extends Notificacion {
-    enviar(mensaje: string): void {
+    public override enviar(mensaje: string): void {
         console.log(`Enviando email con el mensaje: ${mensaje}`);
     }
 }
 
 export class NotificacionSMS extends Notificacion {
-    enviar(mensaje: string): void {
+    public override enviar(mensaje: string): void {
         console.log(`Enviando SMS con el mensaje: ${mensaje}`);
     }
 }
 
 export class NotificacionPush extends Notificacion {
-    enviar(mensaje: string): void {
+    public override enviar(mensaje: string): void {
         console.log(`Enviando notificación push con el mensaje: ${mensaje}`);
     }
 }

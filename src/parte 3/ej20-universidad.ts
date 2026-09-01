@@ -28,7 +28,7 @@ export abstract class Persona {
         public email: string
     ) {}
 
-    abstract obtenerInformacion(): string;
+    public abstract obtenerInformacion(): string;
 }
 
 export class Materia {
@@ -41,29 +41,29 @@ export class Materia {
         public horas: number
     ) {}
 
-    inscribirAlumno(alumno: Alumno): void {
+    public inscribirAlumno(alumno: Alumno): void {
         const yaInscripto = this.alumnosInscriptos.some((a) => a.legajo === alumno.legajo);
         if (!yaInscripto) {
             this.alumnosInscriptos.push(alumno);
         }
     }
 
-    quitarAlumno(alumno: Alumno): void {
+    public quitarAlumno(alumno: Alumno): void {
         this.alumnosInscriptos = this.alumnosInscriptos.filter((a) => a.legajo !== alumno.legajo);
     }
 
-    asignarDocente(docente: Docente): void {
+    public asignarDocente(docente: Docente): void {
         const yaAsignado = this.docentesAsignados.some((d) => d.legajo === docente.legajo);
         if (!yaAsignado) {
             this.docentesAsignados.push(docente);
         }
     }
 
-    getAlumnosInscriptos(): Alumno[] {
+    public getAlumnosInscriptos(): Alumno[] {
         return [...this.alumnosInscriptos];
     }
 
-    getDocentesAsignados(): Docente[] {
+    public getDocentesAsignados(): Docente[] {
         return [...this.docentesAsignados];
     }
 }
@@ -83,16 +83,16 @@ export class Alumno extends Persona {
         materia.inscribirAlumno(this);
     }
 
-    quitarMateria(materia: Materia): void {
+    public quitarMateria(materia: Materia): void {
         this.materias = this.materias.filter((m) => m.codigo !== materia.codigo);
         materia.quitarAlumno(this);
     }
 
-    getMaterias(): Materia[] {
+    public getMaterias(): Materia[] {
         return [...this.materias];
     }
 
-    obtenerInformacion(): string {
+    public override obtenerInformacion(): string {
         return `Alumno: ${this.nombre} ${this.apellido}, Legajo: ${this.legajo} - ${this.materias.length} materias inscriptas`;
     }
 }
@@ -110,7 +110,7 @@ export class Docente extends Persona {
         super(legajo, nombre, apellido, email);
     }
 
-    asignarMateria(materia: Materia): void {
+    public asignarMateria(materia: Materia): void {
         const yaAsignada = this.materiasAsignadas.some((m) => m.codigo === materia.codigo);
         if (!yaAsignada) {
             this.materiasAsignadas.push(materia);
@@ -118,11 +118,11 @@ export class Docente extends Persona {
         materia.asignarDocente(this);
     }
 
-    getMateriasAsignadas(): Materia[] {
+    public getMateriasAsignadas(): Materia[] {
         return [...this.materiasAsignadas];
     }
 
-    obtenerInformacion(): string {
+    public override obtenerInformacion(): string {
         return `Docente: ${this.nombre} ${this.apellido}, Legajo: ${this.legajo}, Especialidad: ${this.especialidad} - ${this.materiasAsignadas.length} materias asignadas`;
     }
 }

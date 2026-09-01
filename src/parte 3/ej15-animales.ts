@@ -10,29 +10,29 @@ export abstract class Animal {
         public edad: number
     ) {}
 
-    abstract hacerSonido(): string;
+    public abstract hacerSonido(): string;
 }
 
 export class Perro extends Animal {
-    hacerSonido(): string {
+    public override hacerSonido(): string {
         return "Guau";
     }
 }
 
 export class Gato extends Animal {
-    hacerSonido(): string {
+    public override hacerSonido(): string {
         return "Miau";
     }
 }
 
 export class Vaca extends Animal {
-    hacerSonido(): string {
+    public override hacerSonido(): string {
         return "Muu";
     }
 }
 
 export class Pajaro extends Animal {
-    hacerSonido(): string {
+    public override hacerSonido(): string {
         return "Pío";
     }
 }

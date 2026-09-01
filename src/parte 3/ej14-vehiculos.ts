@@ -16,29 +16,29 @@ export class Vehiculo {
         public modelo: string
     ) {}
 
-    acelerar(): void {
+    public acelerar(): void {
         console.log(`${this.marca} ${this.modelo} está acelerando`);
     }
 
-    frenar(): void {
+    public frenar(): void {
         console.log(`${this.marca} ${this.modelo} está frenando`);
     }
 }
 
 export class Auto extends Vehiculo {
-    acelerar(): void {
+    public override acelerar(): void {
         console.log(`${this.marca} ${this.modelo} (auto) acelerando`);;
     }
 }
 
 export class Moto extends Vehiculo {
-    acelerar(): void {
+    public override acelerar(): void {
         console.log(`${this.marca} ${this.modelo} (moto) acelerando`);
     }
 }
 
 export class Camion extends Vehiculo {
-    acelerar(): void {
+    public override acelerar(): void {
         console.log(`${this.marca} ${this.modelo} (camión) acelerando`);
     }
 }
