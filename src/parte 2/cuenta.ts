@@ -5,8 +5,8 @@
  * por eso es `private`. Solo se modifica a través de depositar/retirar.
  */
 export class Cuenta {
-    public numero: number;
-    public titular: string;
+    private numero: number;
+    private titular: string;
     private saldo: number;
 
     constructor(numero: number, titular: string, saldoInicial: number = 0) {
@@ -18,14 +18,26 @@ export class Cuenta {
         this.saldo = saldoInicial;
     }
 
-    depositar(monto: number): void {
+    public getNumero(): number {
+        return this.numero;
+    }
+
+    public getTitular(): string {
+        return this.titular;
+    }
+
+    public setTitular(titular: string): void {
+        this.titular = titular;
+    }
+
+    public depositar(monto: number): void {
         if (monto <= 0) {
             throw new Error("El monto a depositar debe ser un nùmero mayor a 0");
         }
         this.saldo += monto;
     }
 
-    retirar(monto: number): void {
+    public retirar(monto: number): void {
         if (monto <= 0) {
             throw new Error("El monto a retirar debe ser un nùmero mayor que 0");
         }
@@ -35,7 +47,7 @@ export class Cuenta {
         this.saldo -= monto;
     }
 
-    consultarSaldo(): number {
+    public consultarSaldo(): number {
         return this.saldo;
     }
 }

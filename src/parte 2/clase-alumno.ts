@@ -20,10 +20,10 @@ export type Materia = {
 }
 
 export class Alumno {
-    public legajo: number;
-    public nombre: string;
-    public apellido: string;
-    public email: string;
+    private legajo: number;
+    private nombre: string;
+    private apellido: string;
+    private email: string;
 
     // EJERCICIO 9: `edad` es privada. Se accede solo con getEdad/setEdad.
     private edad: number;
@@ -45,16 +45,42 @@ export class Alumno {
         this.edad = edad;
         this.email = email;
     }
+    public getLegajo(): number {
+        return this.legajo;
+    }
 
+    public getNombre(): string {
+        return this.nombre;
+    }
+
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+
+    public getApellido(): string {
+        return this.apellido;
+    }
+
+    public setApellido(apellido: string): void {
+        this.apellido = apellido;
+    }
+
+    public getEmail(): string {
+        return this.email;
+    }
+
+    public setEmail(email: string): void {
+        this.email = email;
+    }
     // -------------------------------------------------------------------
     // EJERCICIO 8
     // -------------------------------------------------------------------
 
-    getNombreCompleto(): string {
+    public getNombreCompleto(): string {
         return `${this.nombre} ${this.apellido}`;
     }
 
-    esMayorDeEdad(): boolean {
+    public esMayorDeEdad(): boolean {
         return this.edad >= 18;
     }
 
@@ -62,11 +88,11 @@ export class Alumno {
     // EJERCICIO 9 - encapsulamiento de `edad`
     // -------------------------------------------------------------------
 
-    getEdad(): number {
+    public getEdad(): number {
         return this.edad;
     }
 
-    setEdad(edad: number): void {
+    public setEdad(edad: number): void {
         if (edad < 0) {
             throw new Error("La edad debe ser un nùmero mayor o igual a 0");
         }
@@ -80,11 +106,11 @@ export class Alumno {
     // EJERCICIO 10 - materias
     // -------------------------------------------------------------------
 
-    agregarMateria(materia: Materia): void {
+    public agregarMateria(materia: Materia): void {
         this.materias.push(materia);
     }
 
-    quitarMateria(codigo: number): Materia | undefined {
+    public quitarMateria(codigo: number): Materia | undefined {
         let materiaEncontrada = this.materias.find(m => m.codigo === codigo);
         if (!materiaEncontrada) {
             return undefined;
@@ -93,16 +119,15 @@ export class Alumno {
         return materiaEncontrada;
     }
 
-    estaInscripto(codigo: number): boolean {
+    public estaInscripto(codigo: number): boolean {
         return this.materias.some(m => m.codigo === codigo);
     }
 
-    cantidadMaterias(): number {
+    public cantidadMaterias(): number {
         return this.materias.length;
     }
-    
 
-    getMaterias(): Materia[] {
+    public getMaterias(): Materia[] {
         return [...this.materias];
     }
 }
