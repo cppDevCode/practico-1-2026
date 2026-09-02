@@ -13,17 +13,17 @@
 // EJERCICIO 10 - interface Materia
 // -----------------------------------------------------------------------------
 //TODO cambiar a type
-export interface Materia {
+export type Materia = {
     codigo: number;
     nombre: string;
     horas: number;
 }
 
 export class Alumno {
-    public legajo: number;
-    public nombre: string;
-    public apellido: string;
-    public email: string;
+    private legajo: number;
+    private nombre: string;
+    private apellido: string;
+    private email: string;
 
     // EJERCICIO 9: `edad` es privada. Se accede solo con getEdad/setEdad.
     private edad: number;
@@ -39,67 +39,96 @@ export class Alumno {
         email: string
     ) {
         // TODO (Ejercicio 8): asignar los atributos recibidos.
-        throw new Error("Implementar");
+        this.legajo = legajo;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.email = email;
+    }
+    //getters y setters
+    public getLegajo(): number {
+        return this.legajo;
     }
 
+    public getNombre(): string {
+        return this.nombre;
+    }
+
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+
+    public getApellido(): string {
+        return this.apellido;
+    }
+
+    public setApellido(apellido: string): void {
+        this.apellido = apellido;
+    }
+
+    public getEmail(): string {
+        return this.email;
+    }
+
+    public setEmail(email: string): void {
+        this.email = email;
+    }
     // -------------------------------------------------------------------
     // EJERCICIO 8
     // -------------------------------------------------------------------
 
-    getNombreCompleto(): string {
-        // TODO
-        throw new Error("Implementar");
+    public getNombreCompleto(): string {
+        return `${this.nombre} ${this.apellido}`;
     }
 
-    esMayorDeEdad(): boolean {
-        // TODO
-        throw new Error("Implementar");
+    public esMayorDeEdad(): boolean {
+        return this.edad >= 18;
     }
 
     // -------------------------------------------------------------------
     // EJERCICIO 9 - encapsulamiento de `edad`
     // -------------------------------------------------------------------
 
-    getEdad(): number {
-        // TODO
-        throw new Error("Implementar");
+    public getEdad(): number {
+        return this.edad;
     }
 
-    setEdad(edad: number): void {
-        // TODO: debe impedir edades inválidas.
-        // edad < 0   -> throw new Error(...)
-        // edad > 120 -> throw new Error(...)
-        throw new Error("Implementar");
+    public setEdad(edad: number): void {
+        if (edad < 0) {
+            throw new Error("La edad debe ser un nùmero mayor o igual a 0");
+        }
+        if (edad > 120) {
+            throw new Error("La edad debe ser un nùmero menor o igual a 120");
+        }
+        this.edad = edad;
     }
 
     // -------------------------------------------------------------------
     // EJERCICIO 10 - materias
     // -------------------------------------------------------------------
 
-    agregarMateria(materia: Materia): void {
-        // TODO
-        throw new Error("Implementar");
+    public agregarMateria(materia: Materia): void {
+        this.materias.push(materia);
     }
 
-    quitarMateria(codigo: number): Materia | undefined {
-        // TODO: quitar la materia con ese código y devolverla.
-        // Si no está inscripto en ninguna con ese código, devolver undefined.
-        throw new Error("Implementar");
+    public quitarMateria(codigo: number): Materia | undefined {
+        let materiaEncontrada: Materia | undefined = this.materias.find(m => m.codigo === codigo);
+        if (!materiaEncontrada) {
+            return undefined;
+        }
+        this.materias = this.materias.filter(m => m.codigo !== codigo);
+        return materiaEncontrada;
     }
 
-    estaInscripto(codigo: number): boolean {
-        // TODO
-        throw new Error("Implementar");
+    public estaInscripto(codigo: number): boolean {
+        return this.materias.some(m => m.codigo === codigo);
     }
 
-    cantidadMaterias(): number {
-        // TODO
-        throw new Error("Implementar");
+    public cantidadMaterias(): number {
+        return this.materias.length;
     }
 
-    getMaterias(): Materia[] {
-        // TODO: devolver las materias sin exponer el arreglo interno
-        // (devolver una copia, no la referencia original).
-        throw new Error("Implementar");
+    public getMaterias(): Materia[] {
+        return [...this.materias];
     }
 }
