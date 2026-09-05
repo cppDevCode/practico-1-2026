@@ -10,34 +10,30 @@ export abstract class Animal {
         public edad: number
     ) {}
 
-    abstract hacerSonido(): string;
+    public abstract hacerSonido(): string;
 }
 
 export class Perro extends Animal {
-    hacerSonido(): string {
-        // TODO: devolver "Guau"
-        throw new Error("Implementar");
+    public override hacerSonido(): string {
+        return "Guau";
     }
 }
 
 export class Gato extends Animal {
-    hacerSonido(): string {
-        // TODO: devolver "Miau"
-        throw new Error("Implementar");
+    public override hacerSonido(): string {
+        return "Miau";
     }
 }
 
 export class Vaca extends Animal {
-    hacerSonido(): string {
-        // TODO: devolver "Muu"
-        throw new Error("Implementar");
+    public override hacerSonido(): string {
+        return "Muu";
     }
 }
 
 export class Pajaro extends Animal {
-    hacerSonido(): string {
-        // TODO: devolver "Pío"
-        throw new Error("Implementar");
+    public override hacerSonido(): string {
+        return "Pío";
     }
 }
 
@@ -46,6 +42,7 @@ export class Pajaro extends Animal {
  * su nombre junto con el resultado de `animal.hacerSonido()`.
  */
 export function hacerSonidos(animales: Animal[]): void {
-    // TODO
-    throw new Error("Implementar");
+    animales.forEach(animal => {
+        console.log(`${animal.nombre} dice: ${animal.hacerSonido()}`);
+    });
 }

@@ -8,8 +8,8 @@
  * sin saber de qué tipo concreto es.
  */
 export abstract class Figura {
-    abstract calcularArea(): number;
-    abstract calcularPerimetro(): number;
+    public abstract calcularArea(): number;
+    public abstract calcularPerimetro(): number;
 }
 
 export class Circulo extends Figura {
@@ -17,14 +17,22 @@ export class Circulo extends Figura {
         super();
     }
 
-    calcularArea(): number {
+    //getters y setters
+    public getRadio(): number {
+        return this.radio;
+    }
+    public setRadio(radio: number): void {
+        this.radio = radio;
+    }
+    
+    public calcularArea(): number {
         // TODO: área = π * radio²
-        throw new Error("Implementar");
+        return Math.PI * this.radio * this.radio;
     }
 
-    calcularPerimetro(): number {
+    public calcularPerimetro(): number {
         // TODO: perímetro (circunferencia) = 2 * π * radio
-        throw new Error("Implementar");
+        return 2 * Math.PI * this.radio;
     }
 }
 
@@ -35,15 +43,30 @@ export class Rectangulo extends Figura {
     ) {
         super();
     }
-
-    calcularArea(): number {
-        // TODO: área = base * altura
-        throw new Error("Implementar");
+    //getters y setters
+    public getBase(): number {
+        return this.base;
     }
 
-    calcularPerimetro(): number {
+    public getAltura(): number {
+        return this.altura;
+    }   
+
+    public setBase(base: number): void {
+        this.base = base;
+    }
+    public setAltura(altura: number): void {
+        this.altura = altura;
+    }
+
+    public calcularArea(): number {
+        // TODO: área = base * altura
+        return this.base * this.altura;
+    }
+
+    public calcularPerimetro(): number {
         // TODO: perímetro = 2 * (base + altura)
-        throw new Error("Implementar");
+        return 2 * (this.base + this.altura);
     }
 }
 
@@ -52,13 +75,21 @@ export class Cuadrado extends Figura {
         super();
     }
 
-    calcularArea(): number {
-        // TODO: área = lado²
-        throw new Error("Implementar");
+    public getLado(): number {
+        return this.lado;
     }
 
-    calcularPerimetro(): number {
+    public setLado(lado: number): void {
+        this.lado = lado;
+    }
+
+    public calcularArea(): number {
+        // TODO: área = lado²
+        return this.lado * this.lado;
+    }
+
+    public calcularPerimetro(): number {
         // TODO: perímetro = 4 * lado
-        throw new Error("Implementar");
+        return 4 * this.lado;
     }
 }

@@ -5,29 +5,50 @@
  * por eso es `private`. Solo se modifica a través de depositar/retirar.
  */
 export class Cuenta {
-    public numero: number;
-    public titular: string;
+    private numero: number;
+    private titular: string;
     private saldo: number;
 
     constructor(numero: number, titular: string, saldoInicial: number = 0) {
-        // TODO: asignar numero y titular. Validar que saldoInicial no sea
-        // negativo (si lo es, lanzar un error) y asignarlo a saldo.
-        throw new Error("Implementar");
+        if (saldoInicial < 0) {
+            throw new Error("El saldo inicial no puede ser negativo");
+        }
+        this.numero = numero;
+        this.titular = titular;
+        this.saldo = saldoInicial;
     }
 
-    depositar(monto: number): void {
-        // TODO: no se pueden depositar valores negativos -> throw new Error(...)
-        throw new Error("Implementar");
+    //getters y setters   
+    public getNumero(): number {
+        return this.numero;
     }
 
-    retirar(monto: number): void {
-        // TODO: no se pueden retirar valores negativos, ni retirar más
-        // dinero del disponible -> throw new Error(...)
-        throw new Error("Implementar");
+    public getTitular(): string {
+        return this.titular;
     }
 
-    consultarSaldo(): number {
-        // TODO
-        throw new Error("Implementar");
+    public setTitular(titular: string): void {
+        this.titular = titular;
+    }
+
+    public depositar(monto: number): void {
+        if (monto <= 0) {
+            throw new Error("El monto a depositar debe ser un nùmero mayor a 0");
+        }
+        this.saldo += monto;
+    }
+
+    public retirar(monto: number): void {
+        if (monto <= 0) {
+            throw new Error("El monto a retirar debe ser un nùmero mayor que 0");
+        }
+        if (monto > this.saldo) {
+            throw new Error("Saldo insuficiente para realizar el retiro");
+        }
+        this.saldo -= monto;
+    }
+
+    public consultarSaldo(): number {
+        return this.saldo;
     }
 }

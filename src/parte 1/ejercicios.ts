@@ -27,8 +27,20 @@ import { alumnos, type Alumno } from "../models/db.js";
 // obtenerNombres(alumnos)
 // -> ["Juan", "María", "Pedro", ...]
 export function obtenerNombres(alumnos: Alumno[]): string[] {
-    // TODO
-    throw new Error("Implementar");
+    let nombresAlumnos: string[];
+    const nombreAlumno = (alumno:Alumno) => alumno.nombre;
+
+    try {
+        if (alumnos) {
+            nombresAlumnos = alumnos.map(nombreAlumno);
+        } else {
+            throw new Error ("Array recibido sin datos");
+        }
+    } catch (e) {
+        throw e;
+    }
+    
+    return nombresAlumnos;
 }
 
 // -----------------------------------------------------------------------------
@@ -39,8 +51,21 @@ export function obtenerNombres(alumnos: Alumno[]): string[] {
 // Ejemplo:
 // ["Juan Pérez", "María García", ...]
 export function obtenerNombresCompletos(alumnos: Alumno[]): string[] {
-    // TODO
-    throw new Error("Implementar");
+    let nombreApellido: string[];
+    const nombreCompleto = (alumno: Alumno) => alumno.nombre + ' '
+                + alumno.apellido;
+
+    try {
+        if (alumnos) {
+            nombreApellido = alumnos.map (nombreCompleto);
+        } else {
+            throw new Error("Array de alumnos sin datos");
+        }
+    } catch (e) {
+        throw e;
+    }
+
+    return nombreApellido;
 }
 
 // -----------------------------------------------------------------------------
@@ -48,8 +73,20 @@ export function obtenerNombresCompletos(alumnos: Alumno[]): string[] {
 // -----------------------------------------------------------------------------
 // Devolver solamente los alumnos que tengan 18 años o más.
 export function obtenerMayoresDeEdad(alumnos: Alumno[]): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+    let alumnosMayores18: Alumno[];
+    const mayoresEdad = (alumno: Alumno) => alumno.edad >= 18;
+
+    try {
+        if (alumnos) {
+            alumnosMayores18 = alumnos.filter(mayoresEdad);
+        } else {
+            throw new Error("Array de alumnos sin datos");
+        }
+    } catch (e) {
+        throw e;
+    }
+
+    return alumnosMayores18;
 }
 
 // -----------------------------------------------------------------------------
@@ -58,8 +95,19 @@ export function obtenerMayoresDeEdad(alumnos: Alumno[]): Alumno[] {
 // Un alumno aprueba cuando su nota es mayor o igual a 6.
 // Devolver los alumnos aprobados.
 export function obtenerAprobados(alumnos: Alumno[]): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+    let alumnosAprobados: Alumno[];
+    const traerAprobados = (alumno:Alumno) => alumno.nota >= 6;
+
+    try {
+        if (alumnos) {
+            alumnosAprobados = alumnos.filter(traerAprobados);
+        } else {
+            throw new Error("Array de alumnos sin datos");
+        }
+    } catch (e) {
+        throw e;
+    }
+    return alumnosAprobados;
 }
 
 // -----------------------------------------------------------------------------
@@ -70,8 +118,17 @@ export function obtenerAprobados(alumnos: Alumno[]): Alumno[] {
 //
 // Si el arreglo está vacío, devolver 0.
 export function calcularPromedio(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+    let promedioNotas: number = 0;
+    const promediar = (promedio:number, alumno:Alumno) => promedio + alumno.nota;
+    try {
+        if (alumnos && alumnos.length != 0) {
+            promedioNotas = alumnos.reduce(promediar, 0) / alumnos.length;
+        }         
+    } catch (e) {
+        throw e;
+    }
+
+    return promedioNotas;
 }
 
 // -----------------------------------------------------------------------------
@@ -79,9 +136,20 @@ export function calcularPromedio(alumnos: Alumno[]): number {
 // -----------------------------------------------------------------------------
 // Devolver el alumno que tenga la nota más alta.
 // Si el arreglo está vacío, devolver undefined.
+
 export function obtenerMejorAlumno(alumnos: Alumno[]): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+    let alumnoConMejorNota: Alumno | undefined;
+    const notaMasAlta = (alumnoMejorNota:Alumno, alumno:Alumno) => alumno.nota > alumnoMejorNota.nota ? alumno : alumnoMejorNota;
+
+    try {
+        if (alumnos.length != 0 ) {
+        alumnoConMejorNota = alumnos.reduce(notaMasAlta);
+        }        
+    } catch (e) {
+        throw e;
+    }
+
+    return alumnoConMejorNota;
 }
 
 // -----------------------------------------------------------------------------
@@ -89,12 +157,18 @@ export function obtenerMejorAlumno(alumnos: Alumno[]): Alumno | undefined {
 // -----------------------------------------------------------------------------
 // Buscar un alumno por su número de legajo.
 // Si no existe, devolver undefined.
-export function buscarPorLegajo(
-    alumnos: Alumno[],
-    legajo: number
-): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+export function buscarPorLegajo(alumnos: Alumno[], legajo: number): Alumno | undefined {
+    let alumnoEncontrado: Alumno | undefined;
+    const buscarAlumno = (alumno:Alumno) => alumno.legajo === legajo;
+
+    try {
+        alumnoEncontrado = alumnos.find(buscarAlumno);        
+    } catch (e) {
+        throw e;
+    }
+
+    return alumnoEncontrado;
+    
 }
 
 // -----------------------------------------------------------------------------
@@ -102,12 +176,17 @@ export function buscarPorLegajo(
 // -----------------------------------------------------------------------------
 // Buscar el primer alumno cuyo nombre coincida con el recibido.
 // La comparación debe ser exacta.
-export function buscarPorNombre(
-    alumnos: Alumno[],
-    nombre: string
-): Alumno | undefined {
-    // TODO
-    throw new Error("Implementar");
+export function buscarPorNombre(alumnos: Alumno[], nombre: string): Alumno | undefined {
+    let alumnoEncontrado: Alumno | undefined;
+    const buscarAlumno = (alumno:Alumno) => alumno.nombre === nombre;
+
+    try {
+        alumnoEncontrado = alumnos.find(buscarAlumno);
+    } catch (e) {
+        throw e;
+    }
+
+    return alumnoEncontrado;
 }
 
 // -----------------------------------------------------------------------------
@@ -115,9 +194,14 @@ export function buscarPorNombre(
 // -----------------------------------------------------------------------------
 // Devolver true si existe al menos un alumno con nota menor a 6.
 // Resolver utilizando some.
-export function existeDesaprobado(alumnos: Alumno[]): boolean {
-    // TODO
-    throw new Error("Implementar");
+export function existeDesaprobado(alumnos: Alumno[]): boolean {    
+    const desaprobado = (alumno:Alumno) => alumno.nota < 6;
+
+    try {
+        return alumnos.some(desaprobado);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -126,8 +210,13 @@ export function existeDesaprobado(alumnos: Alumno[]): boolean {
 // Devolver true solamente si todos los alumnos tienen nota mayor o igual a 6.
 // Resolver utilizando every.
 export function todosAprobaron(alumnos: Alumno[]): boolean {
-    // TODO
-    throw new Error("Implementar");
+    const aprobado = (alumno:Alumno) => alumno.nota >= 6;
+
+    try {
+        return alumnos.every(aprobado);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -135,9 +224,10 @@ export function todosAprobaron(alumnos: Alumno[]): boolean {
 // -----------------------------------------------------------------------------
 // Devolver la cantidad de alumnos aprobados.
 // Resolver utilizando filter y length.
-export function cantidadAprobados(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+export function cantidadAprobados(alumnos: Alumno[]): number {    
+    const contarAprobados = (alumno:Alumno) => alumno.nota >= 6;
+
+    return alumnos.filter(contarAprobados).length;
 }
 
 // -----------------------------------------------------------------------------
@@ -146,20 +236,28 @@ export function cantidadAprobados(alumnos: Alumno[]): number {
 // Calcular la suma de las edades de todos los alumnos.
 // Resolver utilizando reduce.
 export function sumarEdades(alumnos: Alumno[]): number {
-    // TODO
-    throw new Error("Implementar");
+    const acumulaEdades = (suma:number, alumno: Alumno) => alumno.edad + suma;
+
+    try {        
+        return alumnos.reduce(acumulaEdades, 0);
+    } catch (e) {
+        throw e;
+    }
+
 }
 
 // -----------------------------------------------------------------------------
 // EJERCICIO 13 - Alumnos de una ciudad
 // -----------------------------------------------------------------------------
 // Devolver los alumnos que pertenezcan a la ciudad recibida.
-export function obtenerAlumnosDeCiudad(
-    alumnos: Alumno[],
-    ciudad: string
-): Alumno[] {
-    // TODO
-    throw new Error("Implementar");
+export function obtenerAlumnosDeCiudad(alumnos: Alumno[], ciudad: string): Alumno[] {
+    const alumnosEnCiudad = (alumno: Alumno) => alumno.ciudad === ciudad;
+
+    try {
+        return alumnos.filter(alumnosEnCiudad);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -169,12 +267,10 @@ export function obtenerAlumnosDeCiudad(
 // Si no hay alumnos en esa ciudad, devolver 0.
 //
 // Se recomienda reutilizar funciones anteriores.
-export function calcularPromedioPorCiudad(
-    alumnos: Alumno[],
-    ciudad: string
-): number {
-    // TODO
-    throw new Error("Implementar");
+export function calcularPromedioPorCiudad(alumnos: Alumno[], ciudad: string): number {
+    const alumnosEnCiudad = obtenerAlumnosDeCiudad(alumnos, ciudad);
+    
+    return calcularPromedio(alumnosEnCiudad);
 }
 
 // -----------------------------------------------------------------------------
@@ -186,12 +282,12 @@ export function calcularPromedioPorCiudad(
 // Ejemplo:
 // transformar([1, 2, 3], n => n * 2)
 // -> [2, 4, 6]
-export function transformar<T, R>(
-    elementos: T[],
-    callback: (elemento: T) => R
-): R[] {
-    // TODO
-    throw new Error("Implementar");
+export function transformar<T, R>(elementos: T[],callback: (elemento: T) => R): R[] {
+    try {
+        return elementos.map(callback);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -203,12 +299,12 @@ export function transformar<T, R>(
 // Ejemplo:
 // filtrar([1, 2, 3, 4], n => n % 2 === 0)
 // -> [2, 4]
-export function filtrar<T>(
-    elementos: T[],
-    callback: (elemento: T) => boolean
-): T[] {
-    // TODO
-    throw new Error("Implementar");
+export function filtrar<T>(elementos: T[],callback: (elemento: T) => boolean): T[] {
+    try {
+        return elementos.filter(callback);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -218,12 +314,12 @@ export function filtrar<T>(
 // el criterio indicado por el callback.
 //
 // Si ningún elemento cumple, devolver undefined.
-export function buscar<T>(
-    elementos: T[],
-    callback: (elemento: T) => boolean
-): T | undefined {
-    // TODO
-    throw new Error("Implementar");
+export function buscar<T>(elementos: T[], callback: (elemento: T) => boolean): T | undefined {
+    try {
+        return elementos.find(callback);
+    } catch (e) {
+        throw(e);
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -235,12 +331,13 @@ export function buscar<T>(
 // Ejemplos:
 // calcularTotal(alumnos, alumno => alumno.edad)
 // calcularTotal(alumnos, alumno => alumno.nota)
-export function calcularTotal(
-    alumnos: Alumno[],
-    callback: (alumno: Alumno) => number
-): number {
-    // TODO
-    throw new Error("Implementar");
+export function calcularTotal(alumnos: Alumno[], callback: (alumno: Alumno) => number): number {
+    const aplicoCallback = (acumulador:number, alumno:Alumno) => acumulador + callback(alumno);
+    try {
+        return alumnos.reduce(aplicoCallback, 0);
+    } catch (e) {
+        throw e;
+    }
 }
 
 // -----------------------------------------------------------------------------
@@ -258,11 +355,22 @@ export function calcularTotal(
 // }
 //
 // Resolver utilizando reduce.
-export function agruparPorCiudad(
-    alumnos: Alumno[]
-): Record<string, Alumno[]> {
-    // TODO
-    throw new Error("Implementar");
+export function agruparPorCiudad(alumnos: Alumno[]): Record<string, Alumno[]> {
+    let ciudades:Record<string, Alumno[]> = {}; 
+    let ciudadActual:string;
+    
+    alumnos.forEach( (alumno:Alumno) =>
+        {
+            ciudadActual = alumno.ciudad;
+            if (ciudadActual in ciudades) {
+                ciudades[ciudadActual]?.push(alumno);
+            } else {
+                ciudades[ciudadActual] = [];
+                ciudades[ciudadActual]?.push(alumno);
+            } 
+        }
+    );
+    return ciudades;
 }
 
 // -----------------------------------------------------------------------------
@@ -285,11 +393,16 @@ export interface Estadisticas {
     mejorAlumno: Alumno | undefined;
 }
 
-export function obtenerEstadisticas(
-    alumnos: Alumno[]
-): Estadisticas {
-    // TODO
-    throw new Error("Implementar");
+export function obtenerEstadisticas(alumnos: Alumno[]): Estadisticas {
+    const estadisticas: Estadisticas = {
+        cantidadTotal:  alumnos.length,
+        cantidadAprobados: cantidadAprobados(alumnos),
+        cantidadDesaprobados: alumnos.length - cantidadAprobados(alumnos),
+        promedio: calcularPromedio(alumnos),
+        mejorAlumno: obtenerMejorAlumno(alumnos)
+    };
+
+    return estadisticas;
 }
 
 // -----------------------------------------------------------------------------
@@ -297,18 +410,18 @@ export function obtenerEstadisticas(
 // -----------------------------------------------------------------------------
 // Descomentar estas líneas cuando se hayan implementado las funciones.
 //
-// console.log(obtenerNombres(alumnos).slice(0, 10));
-// console.log(obtenerNombresCompletos(alumnos).slice(0, 10));
-// console.log(obtenerMayoresDeEdad(alumnos).length);
-// console.log(obtenerAprobados(alumnos).length);
-// console.log(calcularPromedio(alumnos));
-// console.log(obtenerMejorAlumno(alumnos));
-// console.log(buscarPorLegajo(alumnos, 500));
-// console.log(existeDesaprobado(alumnos));
-// console.log(todosAprobaron(alumnos));
-// console.log(cantidadAprobados(alumnos));
-// console.log(sumarEdades(alumnos));
-// console.log(obtenerAlumnosDeCiudad(alumnos, "Bahía Blanca").length);
-// console.log(calcularPromedioPorCiudad(alumnos, "Bahía Blanca"));
-// console.log(agruparPorCiudad(alumnos));
-// console.log(obtenerEstadisticas(alumnos));
+console.log(obtenerNombres(alumnos).slice(0, 10));
+console.log(obtenerNombresCompletos(alumnos).slice(0, 10));
+console.log(obtenerMayoresDeEdad(alumnos).length);
+console.log(obtenerAprobados(alumnos).length);
+console.log(calcularPromedio(alumnos));
+console.log(obtenerMejorAlumno(alumnos));
+console.log(buscarPorLegajo(alumnos, 500));
+console.log(existeDesaprobado(alumnos));
+console.log(todosAprobaron(alumnos));
+console.log(cantidadAprobados(alumnos));
+console.log(sumarEdades(alumnos));
+console.log(obtenerAlumnosDeCiudad(alumnos, "Bahía Blanca").length);
+console.log(calcularPromedioPorCiudad(alumnos, "Bahía Blanca"));
+console.log(agruparPorCiudad(alumnos));
+console.log(obtenerEstadisticas(alumnos));
