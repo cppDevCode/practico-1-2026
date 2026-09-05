@@ -17,6 +17,7 @@ npm install
 1. Completá cada función/método donde dice `// TODO`, en los archivos que se
    listan más abajo.
 2. **No modifiques** los archivos `*.test.ts`, ni `src/db.ts`.
+**NOTA:** Se modificaron las importaciones de los archivos de los ejercicios 14 a 20, a fin de que las pruebas puedan correr correctamente. 
 3. Corré los tests:
 
    ```bash
